@@ -9,6 +9,7 @@ var COLUMN_GAP = 50;
 var FONT_GAP = 16;
 var BAR_HEIGHT = 150;
 var BAR_WIDTH = 40;
+var BAR_PLAYER_COLOR = 'rgba(255, 0, 0, 1)';
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -27,10 +28,22 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
+var getRandomNumber = function (min, max) {
+  return Math.floor((Math.random() * max) - min);
+};
+
+//Генерацию случайного (синего) цвета
+var getRandomBlueColor = function () {
+  return 'hsl(240,' + getRandomNumber(0, 100) + '%, 50%)'
+};
 
 var getColorBar = function (player, i) {
-  return (player === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'hsl(' + (240 - i * 10) + ',100%,50%)';
+  return (player === 'Вы')
+    ? BAR_PLAYER_COLOR
+    : getRandomBlueColor() ;
 };
+
+
 
 window.renderStatistics = function(ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
