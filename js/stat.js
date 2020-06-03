@@ -13,7 +13,7 @@ var FONT_STYLE = '16px PT Mono';
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
 
-var Message = {
+var Messages = {
   TITLE: 'Ура вы победили!',
   SUBTITLE: 'Список результатов:',
 };
@@ -93,8 +93,8 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillStyle = Colors.FONT_COLOR;
   ctx.font = FONT_STYLE;
 
-  ctx.fillText(Message.TITLE, CLOUD_COOR_X + 10, CLOUD_COOR_Y + FONT_GAP + GAP);
-  ctx.fillText(Message.SUBTITLE, CLOUD_COOR_X + 10, CLOUD_COOR_Y + FONT_GAP * 2 + GAP);
+  ctx.fillText(Messages.TITLE, CLOUD_COOR_X + 10, CLOUD_COOR_Y + FONT_GAP + GAP);
+  ctx.fillText(Messages.SUBTITLE, CLOUD_COOR_X + 10, CLOUD_COOR_Y + FONT_GAP * 2 + GAP);
 
   for (var i = 0; i < players.length; i++) {
     renderPlayerScore(ctx, players, i, times);
