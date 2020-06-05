@@ -19,10 +19,10 @@ var Messages = {
 };
 
 var Colors = {
-  FONT_COLOR: '#000000',
-  SHADOW_COLOR: 'rgba(0, 0, 0, 0.7)',
-  CLOUD_COLOR: '#ffffff',
-  PLAYER_BAR_COLOR: 'rgba(255, 0, 0, 1)'
+  BLACK: '#000000',
+  GREY: 'rgba(0, 0, 0, 0.7)',
+  WHITE: '#ffffff',
+  RED: 'rgba(255, 0, 0, 1)'
 };
 
 
@@ -58,7 +58,7 @@ var getRandomBlueColor = function () {
 
 var getColorBar = function (player) {
   return (player === 'Вы')
-    ? Colors.PLAYER_BAR_COLOR
+    ? Colors.RED
     : getRandomBlueColor();
 };
 
@@ -81,16 +81,16 @@ var renderPlayerScore = function (ctx, players, i, times) {
   ctx.fillStyle = getColorBar(players[i], i);
   ctx.fillRect(playerBarCoorX, playerBarCoorY, BAR_WIDTH, playerBarHeight);
 
-  ctx.fillStyle = Colors.FONT_COLOR;
+  ctx.fillStyle = Colors.BLACK;
   ctx.fillText(Math.round(times[i]), resultTextCoorX, resultTextCoorY);
 };
 
 
 window.renderStatistics = function (ctx, players, times) {
-  renderCloud(ctx, CLOUD_COOR_X + GAP, CLOUD_COOR_Y + GAP, Colors.SHADOW_COLOR);
-  renderCloud(ctx, CLOUD_COOR_X, CLOUD_COOR_Y, Colors.CLOUD_COLOR);
+  renderCloud(ctx, CLOUD_COOR_X + GAP, CLOUD_COOR_Y + GAP, Colors.GREY);
+  renderCloud(ctx, CLOUD_COOR_X, CLOUD_COOR_Y, Colors.WHITE);
 
-  ctx.fillStyle = Colors.FONT_COLOR;
+  ctx.fillStyle = Colors.BLACK;
   ctx.font = FONT_STYLE;
 
   ctx.fillText(Messages.TITLE, CLOUD_COOR_X + 10, CLOUD_COOR_Y + FONT_GAP + GAP);
