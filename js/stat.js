@@ -78,7 +78,7 @@ var renderPlayerScore = function (ctx, players, i, times) {
 
   ctx.fillText(players[i], textCoorX, textCoorY);
 
-  ctx.fillStyle = getColorBar(players[i], i);
+  ctx.fillStyle = getColorBar(players[i]);
   ctx.fillRect(playerBarCoorX, playerBarCoorY, BAR_WIDTH, playerBarHeight);
 
   ctx.fillStyle = Colors.BLACK;
