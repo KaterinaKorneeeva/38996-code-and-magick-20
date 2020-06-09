@@ -15,13 +15,13 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 userDialog.classList.remove('hidden');
 
 
-var getRandomNumber = function (arr) {
-  return Math.floor(Math.random() * arr.length);
+var getRandomNumber = function (min, max) {
+  return Math.floor((Math.random() * max) - min);
 };
 
 
 var getRandomItem = function (arr) {
-  return arr[getRandomNumber(arr)];
+  return arr[getRandomNumber(0, arr.length)];
 };
 
 
