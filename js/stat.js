@@ -91,7 +91,6 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillText(Message.TITLE, CLOUD_X + 10, CLOUD_Y + FONT_GAP + GAP);
   ctx.fillText(Message.SUBTITLE, CLOUD_X + 10, CLOUD_Y + FONT_GAP * 2 + GAP);
 
-
   for (var i = 0; i < players.length; i++) {
     renderPlayerScore(ctx, players[i], i, times[i], maxTime);
   }

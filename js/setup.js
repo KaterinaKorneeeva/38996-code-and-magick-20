@@ -5,8 +5,6 @@ var SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Валь
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-var wizards = generateWizards();
-
 var getRandomNumber = function (min, max) {
   return Math.floor((Math.random() * max) - min);
 };
@@ -60,5 +58,5 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 userDialog.classList.remove('hidden');
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-
+var wizards = generateWizards();
 renderWizards(wizards);
