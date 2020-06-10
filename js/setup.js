@@ -5,25 +5,15 @@ var SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Валь
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-
-var userDialog = document.querySelector('.setup');
-var similarListElement = userDialog.querySelector('.setup-similar-list');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-  .content
-  .querySelector('.setup-similar-item');
-
-userDialog.classList.remove('hidden');
-
+var wizards = generateWizards();
 
 var getRandomNumber = function (min, max) {
   return Math.floor((Math.random() * max) - min);
 };
 
-
 var getRandomItem = function (arr) {
   return arr[getRandomNumber(0, arr.length)];
 };
-
 
 var generateWizards = function () {
 
@@ -40,7 +30,6 @@ var generateWizards = function () {
   return wizardsArr;
 };
 
-
 var renderWizard = function (wizard) {
 
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -52,19 +41,24 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+var renderWizards = function (arr) {
 
-var renderWizards = function () {
-
-  var wizards = generateWizards();
   var fragment = document.createDocumentFragment();
 
-  for (var i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
+  for (var i = 0; i < arr.length; i++) {
+    fragment.appendChild(renderWizard(arr[i]));
   }
-
   similarListElement.appendChild(fragment);
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
 };
 
-renderWizards();
+var userDialog = document.querySelector('.setup');
+var similarListElement = userDialog.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+  .content
+  .querySelector('.setup-similar-item');
+
+userDialog.classList.remove('hidden');
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+
+renderWizards(wizards);
