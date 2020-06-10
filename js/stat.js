@@ -56,7 +56,6 @@ var getColorBar = function (player) {
     : getRandomBlueColor();
 };
 
-
 var renderPlayerScore = function (ctx, player, i, time, maxTime) {
 
   var textX = CLOUD_X + COLUMN_GAP + (COLUMN_WIDTH + COLUMN_GAP) * i;
