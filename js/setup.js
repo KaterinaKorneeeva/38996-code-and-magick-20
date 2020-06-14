@@ -22,6 +22,29 @@ var openPopup = function () {
   setup.classList.remove('hidden');
 
   document.addEventListener('keydown', onPopupEscPress);
+
+
+  // Добавляем обработчик клика на кнопку отправки формы
+setupSubmit.addEventListener('click', function(evt) {
+  // Пройдёмся по всем полям
+  console.log('jejdjdjjd');
+
+  evt.preventDefault();
+  sendTest();
+});
+
+// Отправка форма по нажатию на ENTER
+setupSubmit.addEventListener('keydown', function (evt) {
+  evt.preventDefault();
+
+  sendTest();
+//   // console.log('jejdjdjjd');
+// console.log('test', evt.key === 'Enter' && event.target !== setupSubmit);
+//   if (evt.key === 'Enter' && event.target !== setupSubmit) {
+//     setupSubmit.submit();
+//   }
+});
+
 };
 
 var closePopup = function () {
@@ -52,15 +75,11 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-// Отправка форма по нажатию на ENTER
-setupSubmit.addEventListener('keydown', function (evt) {
-  evt.preventDefault();
 
-// console.log('test', evt.key === 'Enter' && event.target !== setupSubmit);
-//   if (evt.key === 'Enter' && event.target !== setupSubmit) {
-//     setupSubmit.submit();
-//   }
-});
+var sendTest = function () {
+  console.log('here');
+  closePopup();
+};
 
 
 userNameInput.addEventListener('input', function () {
@@ -74,3 +93,4 @@ userNameInput.addEventListener('input', function () {
     userNameInput.setCustomValidity('');
   }
 });
+
