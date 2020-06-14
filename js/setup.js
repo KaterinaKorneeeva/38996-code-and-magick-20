@@ -46,19 +46,15 @@ var renderWizard = function (wizard) {
 };
 
 var renderWizards = function (arr) {
-
   var fragment = document.createDocumentFragment();
-
   for (var i = 0; i < arr.length; i++) {
     fragment.appendChild(renderWizard(arr[i]));
   }
-  similarListElement.appendChild(fragment);
+  return fragment;
 };
 
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
-var wizards = generateWizards();
-renderWizards(wizards);
-
 userDialog.classList.remove('hidden');
+var wizards = generateWizards();
+similarListElement.appendChild(renderWizards(wizards));
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
