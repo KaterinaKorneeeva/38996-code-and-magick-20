@@ -54,7 +54,6 @@ var renderWizards = function (arr) {
   return fragment;
 };
 
-userDialog.classList.remove('hidden');
 var wizards = generateWizards();
 similarListElement.appendChild(renderWizards(wizards));
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
