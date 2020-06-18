@@ -97,7 +97,7 @@ var openPopup = function () {
     }
   });
 
-  // Отправка форма по нажатию на ENTER
+  // Отправка формы по нажатию на ENTER
   setupSubmit.addEventListener('keydown', function () {
     closePopup();
   });
@@ -113,7 +113,7 @@ var closePopup = function () {
   fireball.removeEventListener('click', changeColorWizardCoat());
 };
 
-// открыть попап по клику на клику
+// открыть попап по клику
 setupOpen.addEventListener('click', function () {
   openPopup();
 });
