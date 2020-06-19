@@ -20,7 +20,7 @@ var setupSubmit = document.querySelector('.setup-submit');
 var wizardCoat = setup.querySelector('.setup-wizard .wizard-coat');
 var wizardEyes = setup.querySelector('.setup-wizard .wizard-eyes');
 var fireball = setup.querySelector('.setup-fireball-wrap');
-
+var isOpenPopup = false;
 var Key = {
   ENTER: 'Enter',
   ESCAPE: 'Escape'
@@ -76,59 +76,60 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 var onPopupEscPress = function (evt) {
   if (evt.key === Key.ESCAPE && event.target !== setupUserName) {
     evt.preventDefault();
-    closePopup();
+    isOpenPopup = false;
+    openClosePopup(isOpenPopup);
   }
 };
 
 // показать попап
-var openPopup = function () {
-  setup.classList.remove('hidden');
+var openClosePopup = function (popup) {
 
-  document.addEventListener('keydown', onPopupEscPress);
+  if (popup) {
+    setup.classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
 
-  setupClose.addEventListener('click', function () {
-    closePopup();
-  });
+    setupClose.addEventListener('click', function () {
+      openClosePopup(!isOpenPopup);
+    });
+    setupClose.addEventListener('keydown', function (evt) {
+      if (evt.key === Key.ENTER) {
+        evt.preventDefault();
+        openClosePopup(!isOpenPopup);
+      }
+    });
+    // Отправка формы по нажатию на ENTER
+    setupSubmit.addEventListener('keydown', function () {
+      openClosePopup(!isOpenPopup);
+    });
+  } else {
+    // скрыть попап
+    setup.classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
 
-  setupClose.addEventListener('keydown', function (evt) {
-    if (evt.key === Key.ENTER) {
-      evt.preventDefault();
-      closePopup();
-    }
-  });
-
-  // Отправка формы по нажатию на ENTER
-  setupSubmit.addEventListener('keydown', function () {
-    closePopup();
-  });
-};
-
-// скрыть попап
-var closePopup = function () {
-  setup.classList.add('hidden');
-  document.removeEventListener('keydown', onPopupEscPress);
-
-  wizardCoat.removeEventListener('click', changeColorWizardCoat());
-  wizardEyes.removeEventListener('click', changeColorWizardCoat());
-  fireball.removeEventListener('click', changeColorWizardCoat());
+    wizardCoat.removeEventListener('click', changeColorWizardCoat());
+    wizardEyes.removeEventListener('click', changeColorWizardCoat());
+    fireball.removeEventListener('click', changeColorWizardCoat());
+  }
 };
 
 // открыть попап по клику
 setupOpen.addEventListener('click', function () {
-  openPopup();
+  isOpenPopup = true;
+  openClosePopup(isOpenPopup);
 });
 
 // открыть попап по keydown ENTER
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.key === Key.ENTER) {
-    openPopup();
+    isOpenPopup = true;
+    openClosePopup(isOpenPopup);
   }
 });
 
 // обработчик на кнопку отправки формы
 var setupWizardForm = setup.querySelector('.setup-wizard-form');
 setupWizardForm.addEventListener('submit', function () {
-  closePopup();
+  openClosePopup(!isOpenPopup);
 });
 
 // Изменение цвета мантии персонажа
